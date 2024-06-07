@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.og/">
+<head>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+<meta charset="UTF-8">
+<title>Blog::Home</title>
+</head>
+<body>
+	<div class="container">
+		<h1>Muhammad Shahbaz Blog Application</h1>
+		<hr>
+		<ul>
+			<li><a th:href="@{/posts/new}">New Post</a></li>
+		</ul>
+		
+		<div class="">
+			<div class="post" th:each="post:${posts}">
+				<h2><a th:href="@{'/posts/'+${post.id}}" th:text="${post.title}">Title</a></h2>
+				<h3 th:text="'Published at '+${post.createdAt}">Created At</h3>
+				<h3 th:text="'Updated at '+${post.updatedAt}">Updated at</h3>
+				<p th:text="${post.body}">PostBody</p>
+				<hr>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
